@@ -2,10 +2,25 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
+// import
+const booksRoute = require("./routes/book/book.routes.js");
+
 // middleware
 const app = express();
 app.use(express.json());
+app.use("/api/v1/books", booksRoute);
 
+// routes
+app.get("/", (req,res) => {
+  res.send("Blog app Home");
+})
+
+app.get("/health", (req,res) => {
+  res.status(200).send({health: "Health is good"});
+})
+
+
+// connection url
 let connectionUrl = process.env.MONGO_URL;
 connectionUrl = connectionUrl.replace(
   "<username>",
