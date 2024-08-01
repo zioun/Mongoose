@@ -8,7 +8,7 @@ const booksRoute = require("./routes/book/book.routes.js");
 // middleware
 const app = express();
 app.use(express.json());
-app.use("/api/v1/books", booksRoute);
+app.use("/api/v1/books", booksRoute); 
 
 // routes
 app.get("/", (req,res) => {
@@ -45,3 +45,4 @@ async function main() {
   }
 }
 main();
+
